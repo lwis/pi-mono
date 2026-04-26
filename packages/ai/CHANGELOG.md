@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added `opencode-go` provider variants for DeepSeek V4 Flash and V4 Pro models.
+
 ### Changed
 
 - Changed OpenAI Codex Responses default text verbosity to `low` when no verbosity is specified.

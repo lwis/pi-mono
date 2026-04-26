@@ -1063,6 +1063,23 @@ async function generateModels() {
 	];
 	allModels.push(...deepseekV4Models);
 
+	// Add opencode-go variants of DeepSeek models
+	// Remove any models.dev duplicates so hardcoded metadata wins
+	for (let i = allModels.length - 1; i >= 0; i--) {
+		const m = allModels[i];
+		if (m.provider === "opencode-go" && m.id.includes("deepseek-v4")) {
+			allModels.splice(i, 1);
+		}
+	}
+	const opencodeGoDeepseekModels: Model<"openai-completions">[] = deepseekV4Models.map((model) => ({
+		...model,
+		provider: "opencode-go",
+		baseUrl: "https://opencode.ai/zen/go/v1",
+		cost: { ...model.cost },
+		compat: model.compat ? { ...model.compat } : undefined,
+	}));
+	allModels.push(...opencodeGoDeepseekModels);
+
 	for (const candidate of allModels) {
 		if (candidate.api === "openai-completions" && candidate.id.includes("deepseek-v4")) {
 			candidate.compat = {
