@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added `opencode-go` provider variants for DeepSeek V4 Flash and V4 Pro models.
+- Added `opencode-go` provider variants for DeepSeek V4 Flash and V4 Pro models. ([#PR](https://github.com/badlogic/pi-mono/pull/3775)) by [@lwis](https://github.com/lwis)))
 
 ### Changed
 
